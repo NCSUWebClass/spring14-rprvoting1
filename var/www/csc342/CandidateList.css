@@ -1,0 +1,61 @@
+h1 {
+	font-family: Arial;
+	text-align: center;
+}
+
+h3 {
+	font-family: Arial;
+}
+
+h4 {
+	color: #FFFFFF;
+}
+
+p {
+	font-size: 14px;
+}
+
+.caption {
+	color: #FFFFFF;
+}
+
+.pic {
+	height: 100px;
+	width: 100px;
+}
+
+.image {
+	float: left;
+	padding-right: 1em;
+	vertical-align: middle;
+	position: relative;
+	text-align: center;
+}
+
+.profile {
+	border-radius: 0px;
+	margin: 1px;
+	background-color: #2275BB; 
+	padding: 15px;
+	height: 125px;
+}
+
+.profile:hover {
+	background-color: #1D67A4;
+}
+
+.profile_link {
+	color: #111111;
+}
+
+.profile_link:hover {
+	color: #111111;
+	text-decoration: none;
+}
+
+.demo {
+	border-radius: 0px;
+	height: 85px;
+	margin-left: 150px;
+	color: #FFFFFF;
+}
