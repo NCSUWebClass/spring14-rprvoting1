@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.js">
+</script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+	$.ajax({
+		contentType: 'text/plain',
+		data: $("#datain").val(),
+		dataType: 'text/plain',
+		success: function(data){
+			alert("OK");
+			$("#response").html(data);
+		},
+		error: function(data){
+			if(data.status >= 400){
+				alert("Error " + data.status);
+			} else {
+				alert("OK " + data.status);
+			}
+			$("#response").html(data.responseText);
+		},
+		processData: false,
+		type: $("#reqType").val(),
+		url: '/rest/' + $("#link_url").val()
+	});
+  });
+});
+</script>
+</head>
+<body>
+<textarea rows="1" cols="50" id="link_url"> rest page </textarea>
+<br />
+<textarea rows="4" cols="50" id="datain">
+Request data goes here.
+</textarea>
+<textarea rows="1" cols="8" id="reqType">
+TYPE
+</textarea>
+<button>Send</button>
+<br />
+<br />
+Repsonse:
+<br />
+<div id="response"></div>
+</body>
+</html>
+
