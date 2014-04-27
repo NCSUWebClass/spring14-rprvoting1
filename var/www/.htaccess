@@ -1,0 +1,6 @@
+Options +FollowSymLinks
+RewriteEngine On
+
+RewriteRule ^/rest/(.*)$ rest.php [L]        
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule . rest.php [L]
