@@ -35,6 +35,7 @@ ol li {
    }
 .button:hover {
    border-top-color: #28597a;
+	text-decoration: none;
    background: #28597a;
    color: #cccccc;
    }

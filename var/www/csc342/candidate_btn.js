@@ -6,14 +6,22 @@
 function addButton(candidateObj) {
 	var newdiv = document.createElement("div");
 	newdiv.setAttribute("id", "candidate_btn_c" + candidateObj.id);
-	newdiv.setAttribute("class", "candidate_btn");
+	newdiv.setAttribute("class", "candidate_btn profile_link profile");
 	
-	//TODO: make the output look nicer
-	var content = "<h2>Name: " + candidateObj.firstName + " " + candidateObj.lastName + "</h2>\n"; //add the name line
-	content = content + "<h2>Candidate for: " + candidateObj.position.name + "</h2>\n"; // add position text
-	content = content + "<p>" + candidateObj.shortDesc + "</p>\n"; //add description
-	content = content + '<img src="' + candidateObj.img + '" alt="candidateimage>\n'; 
-	
+	var content = '<div class="image">';
+	//content = content + '<object data="PHOTO.jpg" type="image/jpg">\n';
+	if(!candidateObj.img){
+		candidateObj.img = "PHOTO.jpg";
+	}
+	content = content + '<img src="' + candidateObj.img + '" class="pic" alt="candidateimage" />\n';
+	//content = content + "</object><br />";
+	content = content + '<p class="caption">' + candidateObj.firstName + " " + candidateObj.lastName + "</p>\n"; //add the name line
+	content = content + "</div>";
+	content = content + '<div class="demo">';
+	content = content + "<h4>" + candidateObj.position.name + "</h4>\n"; // add position text
+	content = content + '<p class="text">' + candidateObj.shortDesc + '</p>\n'; //add description 
+	content = content + "</div>"
+
 	$("#candidate_btns").append(newdiv,$("#candidate_btns")); //push the button div
 	
 	var tst = $("#candidate_btn_c" + candidateObj.id);
@@ -23,24 +31,37 @@ function addButton(candidateObj) {
 
 function putCandidateInfo(candidateObj){
 	//TODO: make the output look nicer
-	var content = "<h2>Name: " + candidateObj.firstName + " " + candidateObj.lastName + "</h2>\n"; //add the name line
-	content = content + "<h3>Candidate for: " + candidateObj.position.name + "</h3>\n"; // add position text
-	content = content + '<img src="' + candidateObj.img + '" alt="candidateimage">\n'; 
-	content = content + '<p>Description: ' + candidateObj.longDesc + '</p>\n'; 
-	content = content + '<p>Articles:</p>\n<ul>\n';
+
+	var content = '<table class="table1"> \n <tbody> \n <th colspan="2">';
+	content = content + candidateObj.firstName + " " + candidateObj.lastName + "</th>\n"; //add the name line	
+	content = content + '<tr> \n <td width="200"> \n <div class ="jimprofile"> \n' ;
+	content = content + '<img id="pic" src="' + candidateObj.img + '" alt="candidateimage">\n </div> \n </td>';
+	content = content + '<td width ="150"> \n <div class ="jimprofile">';
+	content = content + '<ul> \n' + candidateObj.position.name +'</li><li></li>\n';
+	content = content + '\n <li class ="listy">Description: ' + candidateObj.longDesc +'</li>\n';
+	content = content + "</tr></tbody></table>";
+
+	content = content + '<h3>Q and A</h3>';
+       
+	content = content + '<div id="menu"> \n';
+ 
+	for(var i = 0; i < candidateObj.QandA.length; i++) {
+		content = content + '<p class="header">' + candidateObj.QandA[i].question + '</p> \n <div> \n<p>' + candidateObj.QandA[i].answer + '</p> \n </div>';
+	}	
+	content = content + '</div>';
+
+	content = content + '<p></p><p>Articles:</p>\n<ul>\n <div class="articleclass">';
 	
 	for(var i = 0; i < candidateObj.articles.length; i++) {
 		content = content + '<li><a href="' + candidateObj.articles[i] + '">' + candidateObj.articles[i] + '</a></li>\n';
 	}	
-	content = content + '</ul>\n';
+	content = content + '</ul>\n</div>';
 	
-	content = content + '<h3>Q and A</h3>';
-	for(var i = 0; i < candidateObj.QandA.length; i++) {
-		content = content + '<p>Question: ' + candidateObj.QandA[i].question + '</p><p>Answer: ' + candidateObj.articles[i] + '</p>\n';
-	}	
-	
+
 	var tst = $("#candidateData");
 	tst.html(content);
+      $("#menu").accordion({collapsible: true, active: false});
+
 }
 
 function showCandidate(obj) {
@@ -118,12 +139,12 @@ function posClicked(param) {
 function addPosition(obj) {
 	var newdiv = document.createElement("div");
 	newdiv.setAttribute("id", "position_btn_" + obj.id);
-	newdiv.setAttribute("class", "position_btn");
+	newdiv.setAttribute("class", "position_btn profile");
 	
-	//TODO: make the output look nicer
-	var content = "<h2>Position name: " + obj.name + "</h2>\n"; //add the name line
-	content = content + "<p>Description: " + obj.description + "</p>\n"; // add position text
-	content = content + "<p>Position level: ";
+	
+	var content = "<h4>" + obj.name + "</h4>\n"; //add the name line
+	content = content + '<p class="text">Description: ' + obj.description + '<br />'; // add position text
+	content = content + "Position level: ";
 	if(obj.level == 1) {
 			content = content + "Federal</p>\n"; 
 	}

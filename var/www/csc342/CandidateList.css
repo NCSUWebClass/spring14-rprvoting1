@@ -11,10 +11,6 @@ h4 {
 	color: #FFFFFF;
 }
 
-p {
-	font-size: 14px;
-}
-
 .caption {
 	color: #FFFFFF;
 }
@@ -22,6 +18,11 @@ p {
 .pic {
 	height: 100px;
 	width: 100px;
+}
+
+.text{
+	font-size: 16px;
+	color: #FFFFFF;
 }
 
 .image {

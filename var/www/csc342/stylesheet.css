@@ -12,16 +12,23 @@ li {
 }
 #menu{
     font-family:Arial;
+    color: black;
     
+}
+.listy {
+	font-size: 13px;
+}
+.articleclass {
+	font-size: 18px;
 }
 
 #pic{
     width: 350px;
-    height: 250px;
+    height: 350px;
 }
 .header{
     font-family:Impact;
-    color:blue;
+    color:black;
 }
 .Bio {
     font-family: Arial;
@@ -43,10 +50,11 @@ li {
        background-color: #2275bb;
        color: white;
 }
-.profile {
+.jimprofile {
     list-style-type: none;
     width: 350px;
-    height: 250px;
+    height: 350px;
     padding: 0.4em;
+    font-size: 14px;
     color: white;
 }
